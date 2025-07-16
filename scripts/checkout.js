@@ -10,6 +10,8 @@ import { formatCurrency } from './utils/money.js';
 import daysjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 import { deliveryOptions } from '../data/deliveryOptions.js';
 
+
+function renderOrderSummary() {
 let cartSummaryHTML = '';
 
 
@@ -155,13 +157,7 @@ document.querySelectorAll('.js-delete-link')
     })
   })
 
-document.querySelectorAll('.js-delivery-option')
-  .forEach((element) => {
-    element.addEventListener('click', () => {
-      const { productId, deliveryOptionId} = element.dataset;
-      updateDeliveryOption(productId, deliveryOptionId);
-    });
-  });
+
 
 
 
@@ -225,6 +221,16 @@ document.querySelectorAll('.js-save-link')
     });
   });
 
+  document.querySelectorAll('.js-delivery-option')
+  .forEach((element) => {
+    element.addEventListener('click', () => {
+      const { productId, deliveryOptionId} = element.dataset;
+      updateDeliveryOption(productId, deliveryOptionId);
+      renderOrderSummary();
+    });
+  });
+  
+};
 
-
+renderOrderSummary();
 
