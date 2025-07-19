@@ -141,7 +141,7 @@ export function renderOrderSummary() {
                 const container =
                     document.querySelector(`.js-cart-item-container-${productId}`);
                 container.remove();
-                updateCartQuantity();
+                renderPaymentSummary();
             })
         })
 
@@ -215,9 +215,10 @@ export function renderOrderSummary() {
                 const { productId, deliveryOptionId } = element.dataset;
                 updateDeliveryOption(productId, deliveryOptionId);
                 renderOrderSummary();
+                renderPaymentSummary();
             });
         });
-    renderPaymentSummary();
+    
 };
 
 
